@@ -8,6 +8,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      TMPDIR: /tmp
     steps:
       - uses: actions/checkout@v2
       - name: Test
