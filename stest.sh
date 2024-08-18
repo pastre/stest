@@ -3,8 +3,8 @@ verify() {
 	TEST_CASE_NAME=$1
 	EXPECTATION=$2
 	TEST_CASE="$(cat <&0)"
-	TEST_FOLDER="$TEST_RUN_FOLDER/$(md5 <<< $TEST_CASE_NAME)"
-	mkdir -p $TEST_FOLDER
+	TEST_FOLDER="$TEST_RUN_FOLDER/$TEST_CASE_NAME"
+	mkdir -p "$TEST_FOLDER"
 	echo "Running $TEST_CASE_NAME" > "$TEST_FOLDER/status"
 	bash -c "$TEST_CASE" 2>&1 > "$TEST_FOLDER/result"
 	if test 0 -eq $? && test "succeeds" = $EXPECTATION; then
