@@ -10,6 +10,8 @@ verify() {
 	bash -c "$TEST_CASE" > "$TEST_FOLDER/result"
 	if test 0 -eq $? && test "succeeds" = $EXPECTATION; then
 		echo "$TEST_CASE_NAME: Passed" > "$TEST_FOLDER/status"
+	elif test 0 -ne $? && test "fails" = $EXPECTATION; then
+		echo "$TEST_CASE_NAME: Passed" > "$TEST_FOLDER/status"
 	else
 		echo "$TEST_CASE_NAME: Failed" > "$TEST_FOLDER/status"
 		cat  "$TEST_FOLDER/result"
