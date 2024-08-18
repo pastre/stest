@@ -1,5 +1,4 @@
-TEST_RUN_FOLDER=${TEST_RUN_FOLDER:-"$TMPDIR"}
-TEST_FAILED=""
+TEST_RUN_FOLDER=${TEST_RUN_FOLDER:-"$TMPDIR/stest"}
 verify() {
 	TEST_CASE_NAME=$1
 	EXPECTATION=$2
@@ -21,7 +20,7 @@ verify() {
 [[ "${BASH_SOURCE[0]}" != "${0}" ]] && return 0;
 
 
-echo "Running tests in $PWD"
+echo "Running tests in $PWD. Results are stored in $TEST_RUN_FOLDER"
 mkdir -p $TEST_RUN_FOLDER
 
 FILES="$(find . -name '*_test.sh')"
